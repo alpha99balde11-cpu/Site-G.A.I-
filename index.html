@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA GUINÉENNE D'ALUMINIUM ET DE L'INOX G.A.I</title>
+<style>
+:root { --fond:#f4f5f7; --texte:#222; --inox:#2b2f36; --argent:#c9ced6; --accent:#c9a227; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Arial,Helvetica,sans-serif; background:var(--fond); color:var(--texte); line-height:1.6; }
+a { text-decoration:none; cursor:pointer; }
+img { max-width:100%; display:block; }
+header { display:flex; justify-content:space-between; align-items:center; padding:10px 6%; background:var(--inox); position:sticky; top:0; z-index:10; }
+.logo { display:flex; align-items:center; gap:10px; color:#fff; font-weight:bold; font-size:1.2rem; }
+.logo img { width:42px; height:42px; object-fit:cover; border-radius:50%; }
+.menu ul { display:flex; gap:32px; list-style:none; align-items:center; }
+.menu a { color:var(--argent); transition:.3s; padding-bottom:4px; border-bottom:2px solid transparent; }
+.menu a:hover { color:#fff; }
+.menu a.active { color:var(--accent); border-bottom-color:var(--accent); }
+.bouton { display:inline-block; background:var(--accent); color:#111; padding:12px 28px; border-radius:6px; font-weight:bold; border:none; cursor:pointer; font-size:1rem; transition:.3s; }
+.bouton:hover { background:#e0b92f; transform:translateY(-2px); }
+.hero { position:relative; height:70vh; min-height:380px; overflow:hidden; }
+.hero img { width:100%; height:100%; object-fit:cover; }
+.hero::after { content:""; position:absolute; inset:0; background:rgba(0,0,0,.5); }
+.hero-texte { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:16px; padding:0 8%; color:#fff; max-width:800px; }
+.hero-texte h1 { font-size:2.2rem; line-height:1.2; }
+.hero-texte p { font-size:1.1rem; color:var(--argent); }
+.entree { text-align:center; padding:50px 6% 60px; }
+.entree h3 { color:var(--accent); font-size:1.2rem; margin-bottom:10px; }
+.entree h2 { font-size:1.9rem; line-height:1.3; margin-bottom:30px; }
+.entree .bouton { margin-top:34px; }
+.page-titre { background:var(--inox); color:#fff; text-align:center; padding:44px 6%; }
+.page-titre h1 { font-size:2rem; margin-bottom:8px; }
+.page-titre p { color:var(--argent); }
+.section { padding:56px 6%; }
+.section h2 { text-align:center; margin-bottom:30px; font-size:1.7rem; }
+.grille { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; }
+.carte { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,.1); }
+.carte img { width:100%; height:220px; object-fit:cover; transition:transform .4s; }
+.carte:hover img { transform:scale(1.08); }
+.carte .texte { padding:14px 16px 18px; position:relative; background:#fff; text-align:left; }
+.carte h3 { margin-bottom:4px; }
+.carte p { color:#555; font-size:.95rem; }
+.etapes { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; background:var(--inox); color:#fff; padding:50px 6%; text-align:center; }
+.etapes strong { display:block; color:var(--accent); font-size:1.6rem; }
+.etapes p { color:var(--argent); }
+.atouts { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; padding:50px 6%; background:var(--inox); color:#fff; text-align:center; }
+.atouts strong { color:var(--accent); font-size:1.2rem; }
+.atouts p { margin-top:8px; color:var(--argent); }
+.apropos { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; align-items:center; }
+.apropos img { border-radius:10px; width:100%; height:300px; object-fit:cover; }
+.chiffres { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; margin-top:40px; text-align:center; }
+.chiffres div { background:#fff; padding:22px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+.chiffres strong { display:block; font-size:2rem; color:var(--accent); }
+.contact { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; }
+.infos div { background:#fff; padding:18px; border-radius:10px; margin-bottom:14px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+.infos strong { display:block; color:var(--inox); margin-bottom:4px; }
+form { background:#fff; padding:24px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,.08); display:flex; flex-direction:column; gap:14px; }
+label { font-weight:bold; font-size:.95rem; }
+input, select, textarea { width:100%; padding:11px; border:1px solid var(--argent); border-radius:6px; font-size:1rem; font-family:inherit; }
+textarea { min-height:120px; resize:vertical; }
+.cta { text-align:center; padding:60px 6%; }
+.cta h2 { margin-bottom:24px; font-size:1.7rem; }
+footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20px; font-size:.9rem; }
+.whatsapp { position:fixed; right:18px; bottom:18px; z-index:20; background:#25d366; color:#fff; font-weight:bold; padding:14px 20px; border-radius:50px; box-shadow:0 4px 10px rgba(0,0,0,.3); }
+.page { display:none; }
+.page.show { display:block; }
+@media (max-width:700px) {
+  header { flex-direction:column; gap:10px; padding:10px 4%; }
+  .menu ul { gap:14px; flex-wrap:wrap; justify-content:center; font-size:.9rem; }
+  .hero { height:60vh; }
+  .hero-texte h1 { font-size:1.5rem; }
+  .entree h2 { font-size:1.4rem; }
+  .section, .cta { padding:40px 5%; }
+  .page-titre h1 { font-size:1.6rem; }
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" data-go="index"><img src="./logo.jpeg" alt="Logo G.A.I"><span>G.A.I</span></a>
+  <nav class="menu">
+    <ul>
+      <li><a data-go="accueil">Accueil</a></li>
+      <li><a data-go="services">Services</a></li>
+      <li><a data-go="qui">Qui sommes-nous</a></li>
+      <li><a data-go="contact">Contactez-nous</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section class="page show" id="index">
+  <div class="entree">
+    <h3>Bienvenue chez la G.A.I</h3>
+    <h2>DEVENEZ NOTRE FUTUR CLIENT<br>EN INOX ET EN ALUMINIUM</h2>
+    <div class="grille">
+      <article class="carte"><img src="./1.JPG" alt=""></article>
+      <article class="carte"><img src="./2.JPG" alt=""></article>
+      <article class="carte"><img src="./3.JPG" alt=""></article>
+      <article class="carte"><img src="./4.JPG" alt=""></article>
+    </div>
+    <a class="bouton" data-go="accueil">Découvrir le site</a>
+  </div>
+</section>
+
+<section class="page" id="accueil">
+  <div class="hero">
+    <img src="./logo.jpeg" alt="">
+    <div class="hero-texte">
+      <h1>Portes, fenêtres, balcons et escaliers en inox et en aluminium</h1>
+      <p>Vente et construction sur mesure, partout en Guinée.</p>
+      <a class="bouton" data-go="contact">Demander un devis</a>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Nos réalisations</h2>
+    <div class="grille">
+      <article class="carte"><img src="./porte.jpeg" alt=""><div class="texte"><h3>Portes</h3></div></article>
+      <article class="carte"><img src="./fenetre.jpeg" alt=""><div class="texte"><h3>Fenêtres</h3></div></article>
+      <article class="carte"><img src="./Balcon.JPG" alt=""><div class="texte"><h3>Balcons</h3></div></article>
+      <article class="carte"><img src="./Escalier.jpeg" alt=""><div class="texte"><h3>Escaliers</h3></div></article>
+    </div>
+  </div>
+  <div class="atouts">
+    <div><strong>Sur mesure</strong><p>Chaque projet adapté à vos dimensions.</p></div>
+    <div><strong>Matériaux solides</strong><p>Inox et aluminium résistants.</p></div>
+    <div><strong>Pose soignée</strong><p>Une équipe qui suit votre chantier.</p></div>
+  </div>
+  <div class="cta"><h2>Un projet ? Parlons-en.</h2><a class="bouton" data-go="contact">Contactez-nous</a></div>
+</section>
+
+<section class="page" id="services">
+  <div class="page-titre"><h1>Nos services</h1><p>Tout en inox et en aluminium, fabriqué sur mesure.</p></div>
+  <div class="section">
+    <div class="grille">
+      <article class="carte"><img src="./Porte1.JPG" alt=""><div class="texte"><h3>Portes</h3><p>Portes d'entrée et portes intérieures, solides et élégantes.</p></div></article>
+      <article class="carte"><img data-ph="3" alt=""><div class="texte"><h3>Fenêtres</h3><p>Fenêtres et vitrines faites à vos dimensions.</p></div></article>
+      <article class="carte"><img src="./BAL1.JPG" alt=""><div class="texte"><h3>Balcons</h3><p>Garde-corps et balcons en inox, avec le fini de votre choix.</p></div></article>
+      <article class="carte"><img src="./ES1.JPG" alt=""><div class="texte"><h3>Escaliers</h3><p>Escaliers et rampes en inox et en aluminium.</p></div></article>
+    </div>
+  </div>
+  <div class="etapes">
+    <div><strong>1</strong><p>Vous nous contactez</p></div>
+    <div><strong>2</strong><p>Nous faisons le devis</p></div>
+    <div><strong>3</strong><p>Fabrication sur mesure</p></div>
+    <div><strong>4</strong><p>Pose sur votre chantier</p></div>
+  </div>
+  <div class="cta"><h2>Prêt à lancer votre projet ?</h2><a class="bouton" data-go="contact">Demander un devis</a></div>
+</section>
+
+<section class="page" id="qui">
+  <div class="page-titre"><h1>Qui sommes-nous</h1><p>La Guinéenne d'aluminium et de l'inox (G.A.I)</p></div>
+  <div class="section">
+    <div class="apropos">
+      <img src="./logo.jpeg" alt="">
+      <div><h2 style="text-align:left;">Notre entreprise</h2><p>Decouvrez notre gamme de produits en inox de hautequalité ! Résistants à la corrosion et faciles à nettoyer,nos produits en inox sont parfaits pour votre cuisine,votre salle de bain ou votre extérieur. Commandez maintenant et bénéficiez d'une réduction spéciale !</p></div>
+    </div>
+    <div class="chiffres">
+      <div><strong>10</strong>années d'expérience</div>
+      <div><strong>1000</strong>chantiers réalisés</div>
+      <div><strong>20</strong>personnes dans l'équipe</div>
+    </div>
+  </div>
+  <div class="atouts">
+    <div><strong>Qualité</strong><p>Des matériaux choisis avec soin.</p></div>
+    <div><strong>Délais</strong><p>Des chantiers livrés à la date prévue.</p></div>
+    <div><strong>Confiance</strong><p>Un travail clair avec chaque client.</p></div>
+  </div>
+  <div class="cta"><h2>Travaillons ensemble</h2><a class="bouton" data-go="contact">Contactez-nous</a></div>
+</section>
+
+<section class="page" id="contact">
+  <div class="page-titre"><h1>Contactez-nous</h1><p>Parlez-nous de votre projet, nous vous répondons avec un devis.</p></div>
+  <div class="section">
+    <div class="contact">
+      <div class="infos">
+        <div><strong>Téléphone / WhatsApp</strong>+224628311170</div>
+        <div><strong>Email</strong>mamadouadama386@gmail.com</div>
+        <div><strong>Adresse</strong>Conakry, cimenterie – Guinée</div>
+        <div><strong>Horaires</strong>Lundi au samedi, 8h – 17 h</div>
+      </div>
+      <form id="formulaire">
+    <label for="nom">Votre nom</label>
+    <input type="text" id="nom" required>
+
+    <label for="produit">Ce que vous voulez</label>
+    <select id="produit">
+        <option>Porte</option>
+        <option>Fenêtre</option>
+        <option>Balcon</option>
+        <option>Escalier</option>
+        <option>Autre</option>
+    </select>
+
+    <label for="message">Votre message</label>
+    <textarea id="message" required></textarea>
+
+    <button type="submit" class="bouton">Envoyer sur WhatsApp</button>
+</form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><p>© 2026 La Guinéenne d'aluminium et de l'inox (G.A.I) – Guinée</p></footer>
+<a class="whatsapp" href="https://wa.me/224628311170" target="_blank">WhatsApp</a>
+<script>
+function aller(page) {
+  document.querySelectorAll(".page").forEach(function (p) { p.classList.remove("show"); });
+  document.getElementById(page).classList.add("show");
+  document.querySelectorAll(".menu a").forEach(function (a) {
+    a.classList.toggle("active", a.getAttribute("data-go") === page);
+  });
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll("[data-go]").forEach(function (el) {
+  el.addEventListener("click", function () { aller(el.getAttribute("data-go")); });
+});
+document.getElementById("formulaire").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var texte = "Bonjour, je suis " + document.getElementById("nom").value +
+        ". Je souhaite : " + document.getElementById("produit").value +
+        ". " + document.getElementById("message").value;
+    window.open("https://wa.me/224610391539?text=" + encodeURIComponent(texte), "_blank");
+});
+</script>
+</body>
+</html>
