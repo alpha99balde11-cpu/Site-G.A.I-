@@ -63,8 +63,8 @@ textarea { min-height:120px; resize:vertical; }
 .cta h2 { margin-bottom:24px; font-size:1.7rem; }
 footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20px; font-size:.9rem; }
 .whatsapp { position:fixed; right:18px; bottom:18px; z-index:20; background:#25d366; color:#fff; font-weight:bold; padding:14px 20px; border-radius:50px; box-shadow:0 4px 10px rgba(0,0,0,.3); }
-.page { display:none; }
-.page.show { display:block; }
+html { scroll-behavior: smooth; }
+.page { scroll-margin-top: 130px; }
 @media (max-width:700px) {
   header { flex-direction:column; gap:10px; padding:10px 4%; }
   .menu ul { gap:14px; flex-wrap:wrap; justify-content:center; font-size:.9rem; }
@@ -78,13 +78,13 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
 </head>
 <body>
 <header>
-  <a class="logo" data-go="index"><img src="./logo.jpeg" alt="Logo G.A.I"><span>G.A.I</span></a>
+  <a class="logo" href="#index"><img src="./logo.jpeg" alt="Logo G.A.I"><span>G.A.I</span></a>
   <nav class="menu">
     <ul>
-      <li><a data-go="accueil">Accueil</a></li>
-      <li><a data-go="services">Services</a></li>
-      <li><a data-go="qui">Qui sommes-nous</a></li>
-      <li><a data-go="contact">Contactez-nous</a></li>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#qui">Qui sommes-nous</a></li>
+      <li><a href="#contact">Contactez-nous</a></li>
     </ul>
   </nav>
 </header>
@@ -100,7 +100,7 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
       <article class="carte"><img src="./3.JPG" alt=""></article>
       <article class="carte"><img src="./4.JPG" alt=""></article>
     </div>
-    <a class="bouton" data-go="accueil">Découvrir le site</a>
+    <a class="bouton" href="#accueil">Découvrir le site</a>
   </div>
 </section>
 
@@ -110,7 +110,7 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
     <div class="hero-texte">
       <h1>Portes, fenêtres, balcons et escaliers en inox et en aluminium</h1>
       <p>Vente et construction sur mesure, partout en Guinée.</p>
-      <a class="bouton" data-go="contact">Demander un devis</a>
+      <a class="bouton" href="#contact">Demander un devis</a>
     </div>
   </div>
   <div class="section">
@@ -127,7 +127,7 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
     <div><strong>Matériaux solides</strong><p>Inox et aluminium résistants.</p></div>
     <div><strong>Pose soignée</strong><p>Une équipe qui suit votre chantier.</p></div>
   </div>
-  <div class="cta"><h2>Un projet ? Parlons-en.</h2><a class="bouton" data-go="contact">Contactez-nous</a></div>
+  <div class="cta"><h2>Un projet ? Parlons-en.</h2><a class="bouton" href="#contact">Contactez-nous</a></div>
 </section>
 
 <section class="page" id="services">
@@ -146,7 +146,7 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
     <div><strong>3</strong><p>Fabrication sur mesure</p></div>
     <div><strong>4</strong><p>Pose sur votre chantier</p></div>
   </div>
-  <div class="cta"><h2>Prêt à lancer votre projet ?</h2><a class="bouton" data-go="contact">Demander un devis</a></div>
+  <div class="cta"><h2>Prêt à lancer votre projet ?</h2><a class="bouton" href="#contact">Demander un devis</a></div>
 </section>
 
 <section class="page" id="qui">
@@ -167,7 +167,7 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
     <div><strong>Délais</strong><p>Des chantiers livrés à la date prévue.</p></div>
     <div><strong>Confiance</strong><p>Un travail clair avec chaque client.</p></div>
   </div>
-  <div class="cta"><h2>Travaillons ensemble</h2><a class="bouton" data-go="contact">Contactez-nous</a></div>
+  <div class="cta"><h2>Travaillons ensemble</h2><a class="bouton" href="#contact">Contactez-nous</a></div>
 </section>
 
 <section class="page" id="contact">
@@ -215,17 +215,13 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
 <footer><p>© 2026 La Guinéenne d'aluminium et de l'inox (G.A.I) – Guinée</p></footer>
 <a class="whatsapp" href="https://wa.me/224628311170" target="_blank">WhatsApp</a>
 <script>
-function aller(page) {
-  document.querySelectorAll(".page").forEach(function (p) { p.classList.remove("show"); });
+function 
   document.getElementById(page).classList.add("show");
   document.querySelectorAll(".menu a").forEach(function (a) {
     a.classList.toggle("active", a.getAttribute("data-go") === page);
   });
   window.scrollTo(0, 0);
-}
-document.querySelectorAll("[data-go]").forEach(function (el) {
-  el.addEventListener("click", function () { aller(el.getAttribute("data-go")); });
-});
+
 document.getElementById("formulaire").addEventListener("submit", function (e) {
     e.preventDefault();
     var texte = "Bonjour, je suis " + document.getElementById("nom").value +
