@@ -193,6 +193,15 @@ footer { background:#1a1d22; color:var(--argent); text-align:center; padding:20p
         <option>Autre</option>
     </select>
 
+     <!-- NOUVEAU : à ajouter ici -->
+    <label for="materiau">Matériau</label>
+    <select id="materiau">
+        <option>Inox</option>
+        <option>Aluminium</option>
+        <option>Inox et aluminium</option>
+        <option>Je ne sais pas encore</option>
+    </select>
+    <!-- fin du NOUVEAU -->
     <label for="message">Votre message</label>
     <textarea placeholder="votre message..." id="message" required></textarea>
 
@@ -220,9 +229,10 @@ document.querySelectorAll("[data-go]").forEach(function (el) {
 document.getElementById("formulaire").addEventListener("submit", function (e) {
     e.preventDefault();
     var texte = "Bonjour, je suis " + document.getElementById("nom").value +
-        ". Je souhaite : " + document.getElementById("produit").value +
-        ". " + document.getElementById("message").value;
-    window.open("https://wa.me/224610391539?text=" + encodeURIComponent(texte), "_blank");
+    ". Je souhaite : " + document.getElementById("produit").value +
+    " en " + document.getElementById("materiau").value +   // NOUVEAU
+    ". " + document.getElementById("message").value;
+    window.open("https://wa.me/224628311170?text=" + encodeURIComponent(texte), "_blank");
 });
 </script>
 </body>
